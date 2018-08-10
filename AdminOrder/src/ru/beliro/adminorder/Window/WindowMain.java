@@ -68,10 +68,8 @@ public class WindowMain extends JFrame {
         PhoneDirectory phoneDirectory = new PhoneDirectory();
         
         backgroundPanelRight.add(card1, "1");
-        backgroundPanelRight.add(phoneDirectory, "2");
-        
-        
-        
+        backgroundPanelRight.add(phoneDirectory.getPanel(), "2");
+
         return backgroundPanelRight;
     }
     
