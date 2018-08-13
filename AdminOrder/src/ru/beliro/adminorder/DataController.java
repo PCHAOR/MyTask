@@ -14,7 +14,7 @@ import ru.beliro.adminorder.essences.Worker;
  */
 public class DataController {
     
-    private ArrayList<Worker> workers;
+    private static ArrayList<Worker> workers = new ArrayList<>();
     
     public ArrayList<Worker> getWorkers(){
         return workers;

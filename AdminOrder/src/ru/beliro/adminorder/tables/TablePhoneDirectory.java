@@ -18,9 +18,9 @@ public class TablePhoneDirectory extends AbstractTableModel {
 
     DataController dataController = new DataController();
     
-    public TablePhoneDirectory(ArrayList<Worker> workers) {
+    /*public TablePhoneDirectory(ArrayList<Worker> workers) {
         dataController.setWorkers(workers);
-    }
+    }*/
 
     @Override
     public int getRowCount() {

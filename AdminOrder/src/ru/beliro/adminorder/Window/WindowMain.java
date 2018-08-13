@@ -8,6 +8,7 @@ package ru.beliro.adminorder.Window;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
@@ -15,6 +16,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import ru.beliro.adminorder.DataController;
 import ru.beliro.adminorder.Window.CardPanel.PhoneDirectory;
 
 /**
@@ -29,6 +31,8 @@ public class WindowMain extends JFrame {
     private JPanel backgroundPanelRight;
     
     private CardLayout card = new CardLayout();
+    
+    DataController dataController = new DataController();
 
     public WindowMain() {
        initComponents();
@@ -44,7 +48,10 @@ public class WindowMain extends JFrame {
        
        frame.pack();
        
-       frame.setBounds(0,0,1000,300);
+       //dataController.addWorker(1, "Вася", 919, "341964", 111, "vasy@beliro.ru");
+       
+       //frame.setBounds(0,0,1000,300);
+       frame.setMinimumSize(new Dimension(1000, 500));
        frame.setLocationRelativeTo(null);
        frame.setVisible(true);
     }
