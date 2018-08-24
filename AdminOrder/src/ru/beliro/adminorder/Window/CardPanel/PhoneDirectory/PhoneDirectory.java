@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.beliro.adminorder.Window.CardPanel;
+package ru.beliro.adminorder.Window.CardPanel.PhoneDirectory;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Label;
-import javax.swing.BoxLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -22,7 +19,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
 import ru.beliro.adminorder.DataController;
-import ru.beliro.adminorder.Window.WindowMain;
 import ru.beliro.adminorder.tables.TablePhoneDirectory;
 
 /**
@@ -33,6 +29,7 @@ public class PhoneDirectory extends JPanel{
     
     private JPanel panelMain;
     private JPanel panelSouth;
+    private JPanel panelNorth;
     private JTable table;
     private JScrollPane scrollPane;
     
@@ -43,10 +40,10 @@ public class PhoneDirectory extends JPanel{
     DataController dataController = new DataController();  //Для тестирования добавления данных
 
     public PhoneDirectory() {
-        createNewPanel();
+        createPanelMain();
     }
 
-    private void createNewPanel(){
+    private void createPanelMain(){
                 
         panelMain = new JPanel(new BorderLayout());
         /********************************************/
@@ -58,8 +55,10 @@ public class PhoneDirectory extends JPanel{
         
         /********************************************/
         
-        dataController.addWorker(1, "Вася", 919, "341964", 111, "vasy@beliro.ru");
-        dataController.addWorker(2, "Петя", 921, "346419", 107, "pety@beliro.ru");
+        /*dataController.addWorker(1, "Вася", 919, "341964", 111, "vasy@beliro.ru");
+        dataController.addWorker(2, "Петя", 921, "346419", 107, "pety@beliro.ru");*/
+        dataController.addWorker("Вася", 919, "341964", 111, "vasy@beliro.ru");
+        dataController.addWorker("Петя", 921, "346419", 107, "pety@beliro.ru");
 
         scrollPane = new JScrollPane(table);
         
@@ -67,7 +66,55 @@ public class PhoneDirectory extends JPanel{
         
         panelMain.add(scrollPane,BorderLayout.CENTER);  
         panelMain.add(searchForm(), BorderLayout.SOUTH);
+        panelMain.add(editorForm(), BorderLayout.NORTH);
     }
+    
+    private JPanel editorForm(){
+        panelNorth = new JPanel(new GridLayout(1, 3));
+        
+        JButton addButton = new JButton("Добавить контакт");
+        
+        /* Добавление не работает*/
+        
+        addButton.addActionListener((ActionEvent e) -> {
+            AddFormDialog addFormDialog = new AddFormDialog();
+        });
+        
+        /********************************************/
+        
+        /*Редактирование еще не делал*/
+        
+        JButton editButton = new JButton("Редактировать контакт");
+        
+        /********************************************/
+        
+        JButton deleteButton = new JButton("Удалить отмеченное");
+        
+        /*Это удаление работает криво, надо исправить*/
+        
+        deleteButton.addActionListener((ActionEvent e) -> {
+            
+           dataController.removeWorker(table.getSelectedRows());
+           table.repaint();
+        
+        });
+        
+        
+        /********************************************/
+        
+        panelNorth.add(addButton);
+        panelNorth.add(editButton);
+        panelNorth.add(deleteButton);
+        
+        return panelNorth;
+    }
+    
+    /**
+     * 
+     * Строка поиска в телефонном справочнике
+     * 
+     * @return panelSouth
+     */
     
     private JPanel searchForm(){
         

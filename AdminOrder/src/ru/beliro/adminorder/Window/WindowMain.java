@@ -17,10 +17,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import ru.beliro.adminorder.DataController;
-import ru.beliro.adminorder.Window.CardPanel.PhoneDirectory;
+import ru.beliro.adminorder.Window.CardPanel.PhoneDirectory.PhoneDirectory;
 
 /**
  *
+ * Класс главной формы приложения
+ * 
  * @author kurbatov
  */
 public class WindowMain extends JFrame {

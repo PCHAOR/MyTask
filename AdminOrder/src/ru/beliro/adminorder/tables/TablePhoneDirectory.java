@@ -12,6 +12,9 @@ import ru.beliro.adminorder.essences.Worker;
 
 /**
  *
+ * Класс, который наследует AbstractTableModel для реализации
+ * своей модели таблицы "Телефонный справочник"
+ * 
  * @author kurbatov
  */
 public class TablePhoneDirectory extends AbstractTableModel {
